@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<script>
-    window.addEventListener("load", function() {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-        let checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
-        let box = document.getElementById("but");
-        let testbox = document.getElementById("testbox");
-        box.addEventListener("click", function(event) {
-            checkedOne = Array.prototype.slice.call(checkboxes).some(x => x.checked);
-            testbox.disabled = !checkedOne;
-        });
-    });
-</script>
 <body class="container body-content">
 
 <nav th:replace="fragments :: page-header"></nav>
@@ -43,9 +31,9 @@
             <label th:text="${skill.name}"></label>
         </th:block>
         <a th:href="@{'/skills/add'}">Add Skills</a>
+    <p style="font-size: x-small" th:if="${validCheck}">Please select at least one skill.</p>
     </div>
-
-    <input type="submit" value="Add Job" id="testbox" disabled=true/>
+    <input type="submit" value="Add Job" id="testbox"/>
 </form>
 
 </body>
